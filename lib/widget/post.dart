@@ -83,9 +83,12 @@ class PostWidget extends StatelessWidget {
                             Text(
                               "${post[index]['name']}",
                               style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
+                                  fontSize: 16, fontWeight: FontWeight.w500),
                             ),
-                            Text("${post[index]['address']}")
+                            Text(
+                              "${post[index]['address']}",
+                              style: const TextStyle(fontSize: 13.5),
+                            )
                           ],
                         ),
                       ],
@@ -107,31 +110,85 @@ class PostWidget extends StatelessWidget {
             ),
             ListTile(
               leading: Wrap(
-                spacing: 8,
+                spacing: 10,
                 children: const [
                   Icon(
-                    Icons.favorite,
-                    color: Colors.red,
+                    Icons.favorite_border_outlined,
                     size: 35,
+                    color: Colors.black54,
                   ),
                   Icon(
-                    Icons.message,
+                    Icons.message_outlined,
                     size: 35,
+                    color: Colors.black54,
                   ),
                   Icon(
                     Icons.share_outlined,
                     size: 35,
-                  )
+                    color: Colors.black54,
+                  ),
                 ],
               ),
               trailing: const Icon(
                 Icons.bookmark_border_outlined,
                 size: 35,
+                color: Colors.black54,
               ),
             ),
-            const Divider(
-              color: Colors.black,
-            )
+            SizedBox(
+              height: 75,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 12, left: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          "Liked by ",
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        Text(
+                          "${post[index]['name']}",
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          " ${post[index]['name']}",
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.02,
+                        ),
+                        const Text(
+                          "Hello",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    const Text(
+                      "View all 13 comments",
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // const Divider(
+            //   color: Colors.black,
+            // ),
           ],
         );
       },

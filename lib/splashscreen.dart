@@ -19,8 +19,7 @@ class SplashScreen extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.75,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(
-                      "https://assets.stickpng.com/images/5a4e432a2da5ad73df7efe7a.png"),
+                  image: AssetImage("images/instagram.png"),
                   fit: BoxFit.cover)),
         ),
         defaultNextScreen: const HomePage(),

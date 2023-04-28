@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/message/messagepage.dart';
+import 'package:instagram/notification/notificationspage.dart';
 import 'package:instagram/widget/post.dart';
 import 'package:instagram/widget/story.dart';
 
@@ -17,7 +19,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 8.0, right: 10, left: 10),
               child: Column(
                 children: [
                   Row(
@@ -28,34 +30,56 @@ class _HomePageState extends State<HomePage> {
                         width: 120,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(
-                                  "https://assets.stickpng.com/images/5a4e432a2da5ad73df7efe7a.png",
-                                ),
+                                image: AssetImage("images/instagram.png"),
                                 fit: BoxFit.cover)),
                       ),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.favorite_border,
-                            size: 30,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.04,
-                          ),
-                          const Icon(
-                            Icons.message,
-                            size: 30,
-                          )
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const NotificationPage(),
+                                  ));
+                                },
+                                icon: const Icon(
+                                  Icons.favorite_border,
+                                  size: 33,
+                                )),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.04,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const MessagePage(),
+                                ));
+                              },
+                              child: const SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: Image(
+                                    image: AssetImage("images/message.png")),
+                              ),
+                            )
+                            // const Icon(
+                            //   Icons.message,
+                            //   size: 30,
+                            // )
+                          ],
+                        ),
                       )
                     ],
                   ),
-                  StoryWidget(),
+                  StoryList(),
                 ],
               ),
             ),
-            const Divider(
-              color: Colors.grey,
+            Divider(
+              height: 5,
+              color: Colors.grey.withOpacity(0.4),
             ),
             Expanded(
               child: PostWidget(),

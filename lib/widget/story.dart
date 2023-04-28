@@ -1,9 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:instagram/widget/storypage.dart';
 
-class StoryWidget extends StatelessWidget {
-  StoryWidget({Key? key}) : super(key: key);
+class StoryList extends StatelessWidget {
+  StoryList({Key? key}) : super(key: key);
 
   List<dynamic> story = [
     {"images": 'images/daddy.jpg', "username": "ManiRam"},
@@ -26,17 +27,25 @@ class StoryWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Stack(children: [
-              Container(
-                width: 65,
-                height: 65,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage("images/sagar.jpg"),
-                        fit: BoxFit.cover)),
+              Column(
+                children: [
+                  Container(
+                    width: 65,
+                    height: 65,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage("images/sagar.jpg"),
+                            fit: BoxFit.cover)),
+                  ),
+                  const Text(
+                    "Add story",
+                    style: TextStyle(fontSize: 14),
+                  )
+                ],
               ),
               Positioned(
-                bottom: 0,
+                bottom: 12,
                 right: 0,
                 child: Container(
                   height: 23,
@@ -63,55 +72,68 @@ class StoryWidget extends StatelessWidget {
                 ),
               )
             ]),
+            const SizedBox(
+              width: 4,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(
                 story.length,
                 (index) {
                   return Padding(
-                    padding: const EdgeInsets.all(3.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 72,
-                          height: 72,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xFF982282),
-                                Color(0xFFEEA863),
-                              ],
-                            ),
+                    padding: const EdgeInsets.all(3),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => StoryPage(
+                            map: story[index],
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: Container(
-                              width: 66,
-                              height: 66,
-                              decoration: const BoxDecoration(
-                                  color: Colors.white, shape: BoxShape.circle),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Container(
-                                  width: 65,
-                                  height: 65,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            '${story[index]["images"]}'),
-                                        fit: BoxFit.cover),
+                        ));
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 72,
+                            height: 72,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFF982282),
+                                  Color(0xFFEEA863),
+                                ],
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(3),
+                              child: Container(
+                                width: 66,
+                                height: 66,
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4),
+                                  child: Container(
+                                    width: 65,
+                                    height: 65,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              '${story[index]["images"]}'),
+                                          fit: BoxFit.cover),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Text('${story[index]["username"]}'),
-                      ],
+                          Text('${story[index]["username"]}'),
+                        ],
+                      ),
                     ),
                   );
                 },
