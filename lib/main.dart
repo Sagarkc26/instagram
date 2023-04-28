@@ -12,9 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          inputDecorationTheme: InputDecorationTheme(hintStyle: TextStyle())),
+          inputDecorationTheme:
+              const InputDecorationTheme(hintStyle: TextStyle())),
       title: "Instagram UI",
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
