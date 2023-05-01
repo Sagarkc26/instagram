@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/addphoto/addphoto.dart';
+import 'package:instagram/bottomnavbar.dart';
 import 'package:instagram/bottomnavbarpages.dart/search.dart';
 import 'package:instagram/message/messagepage.dart';
 import 'package:instagram/notification/notificationspage.dart';
@@ -15,6 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    print("homepage");
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -85,49 +88,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: PostWidget(),
             ),
-            BottomNavigationBar(
-              selectedItemColor: Colors.grey,
-              unselectedItemColor: Colors.grey,
-              items: [
-                BottomNavigationBarItem(
-                    icon: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ));
-                        },
-                        child: const Icon(Icons.home)),
-                    label: "Home"),
-                BottomNavigationBarItem(
-                    icon: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SearchPage(),
-                        ));
-                      },
-                      child: const Icon(Icons.search),
-                    ),
-                    label: "About"),
-                BottomNavigationBarItem(
-                    icon: GestureDetector(
-                        onTap: () {},
-                        child: const Icon(Icons.add_box_outlined)),
-                    label: "Product"),
-                BottomNavigationBarItem(
-                    icon: GestureDetector(
-                        onTap: () {},
-                        child: const Icon(Icons.video_collection_outlined)),
-                    label: "Contact"),
-                BottomNavigationBarItem(
-                    icon: GestureDetector(
-                        onTap: () {},
-                        child: const CircleAvatar(
-                          radius: 13,
-                          backgroundImage: AssetImage("images/skc.jpg"),
-                        )),
-                    label: "Settings"),
-              ],
-            ),
+            const BottomNavbar()
           ],
         ),
       ),
