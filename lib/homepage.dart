@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/bottomnavbar.dart';
 import 'package:instagram/message/messagepage.dart';
 import 'package:instagram/notification/notificationspage.dart';
 import 'package:instagram/widget/post.dart';
@@ -86,7 +85,6 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: PostWidget(),
             ),
-            const BottomNavbar()
           ],
         ),
       ),

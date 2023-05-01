@@ -1,6 +1,7 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/homepage.dart';
+import 'package:instagram/bottomnavbar.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class SplashScreen extends StatelessWidget {
                   image: AssetImage("images/instagram.png"),
                   fit: BoxFit.cover)),
         ),
-        defaultNextScreen: const HomePage(),
+        defaultNextScreen: const MainPage(),
       ),
       // body: Column(
       //   children: [

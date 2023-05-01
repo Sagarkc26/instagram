@@ -22,7 +22,7 @@ class Create extends StatelessWidget {
                   height: 460,
                   child: Column(children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
+                      height: MediaQuery.of(context).size.height * 0.012,
                     ),
                     Container(
                       height: 5,
@@ -32,54 +32,56 @@ class Create extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
+                      height: getDeviceHeight(context) * 0.02,
                     ),
                     const Text(
                       "Create",
                       style:
                           TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Divider(
-                        color: Colors.black54,
-                      ),
+                    Divider(
+                      color: Colors.black54.withOpacity(0.2),
                     ),
                     listofCreate(
                         Icons.video_collection_outlined, "Reel", context),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 62, right: 12, top: 7),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 62, right: 12, top: 7),
                       child: Divider(
-                        color: Colors.black54,
+                        color: Colors.black54.withOpacity(0.2),
                       ),
                     ),
                     listofCreate(Icons.grid_on, "Post", context),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 62, right: 12, top: 7),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 62, right: 12, top: 7),
                       child: Divider(
-                        color: Colors.black54,
+                        color: Colors.black54.withOpacity(0.2),
                       ),
                     ),
                     listofCreate(Icons.addchart_rounded, "Story", context),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 62, right: 12, top: 7),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 62, right: 12, top: 7),
                       child: Divider(
-                        color: Colors.black54,
+                        color: Colors.black54.withOpacity(0.2),
                       ),
                     ),
                     listofCreate(Icons.sports_volleyball_sharp,
                         "Story Highlight", context),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 62, right: 12, top: 7),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 62, right: 12, top: 7),
                       child: Divider(
-                        color: Colors.black54,
+                        color: Colors.black54.withOpacity(0.2),
                       ),
                     ),
                     listofCreate(Icons.live_tv_outlined, "Live", context),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 62, right: 12, top: 7),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 62, right: 12, top: 7),
                       child: Divider(
-                        color: Colors.black54,
+                        color: Colors.black54.withOpacity(0.2),
                       ),
                     ),
                     listofCreate(Icons.menu_book_sharp, "Guide", context)
@@ -94,25 +96,27 @@ class Create extends StatelessWidget {
   }
 
   Widget listofCreate(IconData icon, String text, BuildContext context) {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          SizedBox(
-            width: getDeviceWidth(context) * 0.05,
-          ),
-          Icon(
-            icon,
-            color: Colors.black54,
-          ),
-          SizedBox(
-            width: getDeviceWidth(context) * 0.05,
-          ),
-          Text(
-            text,
-            style: const TextStyle(fontSize: 16),
-          )
-        ],
+    return Expanded(
+      child: SizedBox(
+        height: 30,
+        child: Row(
+          children: [
+            SizedBox(
+              width: getDeviceWidth(context) * 0.05,
+            ),
+            Icon(
+              icon,
+              color: Colors.black54,
+            ),
+            SizedBox(
+              width: getDeviceWidth(context) * 0.05,
+            ),
+            Text(
+              text,
+              style: const TextStyle(fontSize: 16),
+            )
+          ],
+        ),
       ),
     );
   }

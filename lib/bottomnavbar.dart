@@ -1,106 +1,85 @@
-import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:instagram/Reel/reel.dart';
 import 'package:instagram/addphoto/addphoto.dart';
 import 'package:instagram/bottomnavbarpages.dart/profile.dart';
+import 'package:instagram/bottomnavbarpages.dart/search.dart';
+import 'package:instagram/homepage.dart';
 
-import 'bottomnavbarpages.dart/search.dart';
-import 'homepage.dart';
-
-class BottomNavbar extends StatefulWidget {
-  const BottomNavbar({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<BottomNavbar> createState() => _BottomNavbarState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _BottomNavbarState extends State<BottomNavbar> {
-  List<File> selectedImages = [];
-  final picker = ImagePicker();
+class _MainPageState extends State<MainPage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _widgetOptions = [
+    const HomePage(),
+    const SearchPage(),
+    const MultipleImageSelector(),
+    const ReelPage(),
+    const ProfilePage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      selectedItemColor: Colors.grey,
-      unselectedItemColor: Colors.grey,
-      items: [
-        BottomNavigationBarItem(
-            icon: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ));
-                },
-                child: const Icon(Icons.home)),
-            label: "Home"),
-        BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const SearchPage(),
-                ));
-              },
-              child: const Icon(Icons.search),
+    return Scaffold(
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.home,
             ),
-            label: "About"),
-        BottomNavigationBarItem(
-            icon: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MultipleImageSelector(),
-                  ));
-                },
-                child: const Icon(Icons.add_box_outlined)),
-            label: "Product"),
-        BottomNavigationBarItem(
-            icon: GestureDetector(
-                onTap: () {},
-                child: const Icon(Icons.video_collection_outlined)),
-            label: "Contact"),
-        BottomNavigationBarItem(
-            icon: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const ProfilePage(),
-                  ));
-                },
-                child: const CircleAvatar(
-                  radius: 13,
-                  backgroundImage: AssetImage("images/skc.jpg"),
-                )),
-            label: "Settings"),
-      ],
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.search,
+            ),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.add_circled,
+            ),
+            label: 'Add Photo',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.videocam_circle,
+            ),
+            label: 'Reel',
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 13,
+              backgroundImage: AssetImage("images/skc.jpg"),
+            ),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
+      ),
     );
   }
-
-  Future getImages() async {
-    final pickedFile = await picker.pickMultiImage(
-        imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
-    List<XFile> xfilePick = pickedFile;
-
-    setState(
-      () {
-        if (xfilePick.isNotEmpty) {
-          for (var i = 0; i < xfilePick.length; i++) {
-            selectedImages.add(File(xfilePick[i].path));
-          }
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Nothing is selected')));
-        }
-      },
-    );
-  }
-}
-
-Widget imagebox() {
-  return Container(
-    height: 125,
-    width: 80,
-    alignment: Alignment.center,
-    decoration: BoxDecoration(
-      color: const Color(0xffD9D8D8),
-      border: Border.all(width: 1),
-    ),
-  );
 }

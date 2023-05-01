@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/shared/device_size.dart';
 
 class ProfileName extends StatelessWidget {
   const ProfileName({
@@ -35,33 +36,34 @@ class ProfileName extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20)),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
+                        height: getDeviceHeight(context) * 0.01,
                       ),
-                      const ListTile(
-                        leading: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage("images/suman.jpg"),
-                        ),
-                        title: Text("suman_34"),
-                        trailing: CircleAvatar(
-                          radius: 10,
-                          backgroundColor: Color.fromARGB(255, 15, 244, 23),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      const ListTile(
-                        leading: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.add,
-                            size: 30,
-                            color: Colors.black54,
+                      const Expanded(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 30,
+                            backgroundImage: AssetImage("images/suman.jpg"),
+                          ),
+                          title: Text("suman_34"),
+                          trailing: CircleAvatar(
+                            radius: 10,
+                            backgroundColor: Color.fromARGB(255, 15, 244, 23),
                           ),
                         ),
-                        title: Text("Add account"),
+                      ),
+                      const Expanded(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 30,
+                            backgroundColor: Colors.white,
+                            child: Icon(
+                              Icons.add,
+                              size: 30,
+                              color: Colors.black54,
+                            ),
+                          ),
+                          title: Text("Add account"),
+                        ),
                       ),
                     ],
                   ));
