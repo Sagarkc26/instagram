@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/addphoto/addphoto.dart';
 import 'package:instagram/bottomnavbar.dart';
-import 'package:instagram/bottomnavbarpages.dart/search.dart';
 import 'package:instagram/message/messagepage.dart';
 import 'package:instagram/notification/notificationspage.dart';
 import 'package:instagram/widget/post.dart';

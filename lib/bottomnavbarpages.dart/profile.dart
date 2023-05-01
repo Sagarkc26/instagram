@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/bottomnavbarpages.dart/profilepart/create.dart';
+import 'package:instagram/bottomnavbarpages.dart/profilepart/menu.dart';
+import 'package:instagram/bottomnavbarpages.dart/profilepart/profilename.dart';
+import 'package:instagram/bottomnavbarpages.dart/profilepart/profilepicrow.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -21,99 +25,11 @@ class _ProfilePageState extends State<ProfilePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20))),
-                          builder: (BuildContext context) {
-                            return Container(
-                                height: 180,
-                                decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20))),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.01,
-                                    ),
-                                    Container(
-                                      height: 7,
-                                      width: 45,
-                                      decoration: BoxDecoration(
-                                          color: Colors.black54,
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.01,
-                                    ),
-                                    const ListTile(
-                                      leading: CircleAvatar(
-                                        radius: 30,
-                                        backgroundImage:
-                                            AssetImage("images/suman.jpg"),
-                                      ),
-                                      title: Text("suman_34"),
-                                      trailing: CircleAvatar(
-                                        radius: 10,
-                                        backgroundColor: Colors.blue,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.02,
-                                    ),
-                                    const ListTile(
-                                      leading: CircleAvatar(
-                                        radius: 30,
-                                        backgroundColor: Colors.white,
-                                        child: Icon(
-                                          Icons.add,
-                                          size: 30,
-                                          color: Colors.black54,
-                                        ),
-                                      ),
-                                      title: Text("Add account"),
-                                    )
-                                  ],
-                                ));
-                          });
-                    },
-                    child: Row(
-                      children: const [
-                        Text(
-                          "suman_34",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Icon(Icons.keyboard_arrow_down_outlined)
-                      ],
-                    ),
-                  ),
+                  const ProfileName(),
                   Row(
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.add_box_outlined,
-                            size: 30,
-                          )),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.menu,
-                            size: 30,
-                          ))
+                    children: const [
+                      Create(),
+                      Menu(),
                     ],
                   ),
                 ],
@@ -121,68 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(
                 height: 15,
               ),
-              Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage("images/sagar.jpg"),
-                  ),
-                  const Spacer(),
-                  Column(
-                    children: const [
-                      Text(
-                        "51",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "Posts",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Column(
-                    children: const [
-                      Text(
-                        "324",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "Followers",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Column(
-                    children: const [
-                      Text(
-                        "316",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "Following",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              const Profilepic(),
               const SizedBox(
                 height: 25,
               ),
@@ -225,6 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 20,
               ),
               const TabBar(
+                indicatorColor: Colors.black,
                 tabs: <Widget>[
                   Tab(
                     icon: Icon(
