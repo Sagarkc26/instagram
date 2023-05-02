@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/Reel/reel.dart';
 import 'package:instagram/addphoto/addphoto.dart';
-import 'package:instagram/bottomnavbarpages.dart/profile.dart';
-import 'package:instagram/bottomnavbarpages.dart/search.dart';
-import 'package:instagram/homepage.dart';
+import 'package:instagram/profile/profile.dart';
+
+import '../homepage/homepage.dart';
+import '../search/search.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

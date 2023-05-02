@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/data.dart';
+
+import '../../data/data.dart';
 
 class MessagePage extends StatelessWidget {
   const MessagePage({super.key});

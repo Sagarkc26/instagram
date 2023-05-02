@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/message/messagepage.dart';
-import 'package:instagram/notification/notificationspage.dart';
-import 'package:instagram/widget/post.dart';
-import 'package:instagram/widget/story.dart';
+import 'package:instagram/homepage/widgets/message.dart';
+import 'package:instagram/homepage/widgets/notification.dart';
+import 'package:instagram/homepage/widgets/post.dart';
+import 'package:instagram/homepage/widgets/story/story.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

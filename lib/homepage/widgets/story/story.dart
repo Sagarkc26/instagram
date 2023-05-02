@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:instagram/widget/storypage.dart';
+import 'package:instagram/homepage/widgets/story/storypage.dart';
 
 class StoryList extends StatelessWidget {
   StoryList({Key? key}) : super(key: key);

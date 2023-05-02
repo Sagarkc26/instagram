@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class StoryPage extends StatefulWidget {
   final Map map;
-  StoryPage({
+  const StoryPage({
     Key? key,
     required this.map,
   }) : super(key: key);

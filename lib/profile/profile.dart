@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/bottomnavbarpages.dart/profilepart/create.dart';
-import 'package:instagram/bottomnavbarpages.dart/profilepart/menu.dart';
-import 'package:instagram/bottomnavbarpages.dart/profilepart/profilename.dart';
-import 'package:instagram/bottomnavbarpages.dart/profilepart/profilepicrow.dart';
+import 'package:instagram/profile/widgets/create.dart';
+import 'package:instagram/profile/widgets/menu.dart';
+import 'package:instagram/profile/widgets/profilename.dart';
+import 'package:instagram/profile/widgets/profilepic.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
