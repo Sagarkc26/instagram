@@ -74,7 +74,7 @@ class Menu extends StatelessWidget {
             Text(
               text,
               style: const TextStyle(fontSize: 16),
-            )
+            ),
           ],
         ),
       ),

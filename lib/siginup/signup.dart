@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/siginup/widget/email.dart';
 
 import '../loginpage/login.dart';
 
@@ -53,30 +54,7 @@ class _SignupState extends State<Signup> {
                                 image: AssetImage("images/instagram.png"))),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 30, left: 25, right: 25),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(28),
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Colors.black38,
-                                  blurRadius: 11,
-                                  offset: Offset(0, 7))
-                            ]),
-                        child: TextFormField(
-                          controller: _userController,
-                          decoration: InputDecoration(
-                              fillColor: Colors.grey[50],
-                              filled: true,
-                              prefixIcon: const Icon(Icons.email),
-                              label: const Text("Email/Phone"),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(28))),
-                        ),
-                      ),
-                    ),
+                    Email(userController: _userController),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 30, left: 25, right: 25),
@@ -173,41 +151,37 @@ class _SignupState extends State<Signup> {
                     ),
                   ],
                 ),
-                Column(
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Divider(
+                    color: Colors.black,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Divider(
-                        color: Colors.black,
-                      ),
+                    const Text(
+                      "Already have an account?",
+                      style: TextStyle(fontSize: 16),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Already have an account?",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (_) {
-                              return const LoginPage();
-                            }));
-                          },
-                          child: const Text(
-                            "Log In",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline),
-                          ),
-                        )
-                      ],
+                    const SizedBox(
+                      width: 3,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) {
+                          return const LoginPage();
+                        }));
+                      },
+                      child: const Text(
+                        "Log In",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline),
+                      ),
                     )
                   ],
                 ),
