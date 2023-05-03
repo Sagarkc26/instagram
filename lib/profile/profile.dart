@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/data/data.dart';
 import 'package:instagram/profile/widgets/create.dart';
 import 'package:instagram/profile/widgets/menu.dart';
 import 'package:instagram/profile/widgets/profilename.dart';
@@ -96,20 +97,39 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              // const TabBarView(
-              //   children: <Widget>[
-              //     Expanded(
-              //       child: Center(
-              //         child: Text("It's cloudy here"),
-              //       ),
-              //     ),
-              //     Expanded(
-              //       child: Center(
-              //         child: Text("It's rainy here"),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              Expanded(
+                child: TabBarView(
+                  children: <Widget>[
+                    GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3, // number of columns
+                          mainAxisSpacing: 2.5, // space between rows
+                          crossAxisSpacing: 5, // space between columns
+                          childAspectRatio:
+                              1.0, // width to height ratio of grid cells
+                        ),
+                        itemCount: data.length,
+                        itemBuilder: (BuildContext ctx, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 2.5),
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage("${data[index]['images']}"),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                          );
+                        }),
+                    const Center(
+                      child: Text("No photo tagged yet"),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         )),

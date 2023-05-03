@@ -1,6 +1,6 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:instagram/loginpage/login.dart';
 import '../bottomNavBar/bottomnavbar.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -10,21 +10,20 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FlutterSplashScreen.fadeIn(
-        gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xff982282), Color(0xffEEA863)],
-        ),
-        childWidget: Container(
-          height: MediaQuery.of(context).size.height * 0.1,
-          width: MediaQuery.of(context).size.width * 0.75,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/instagram.png"),
-                  fit: BoxFit.cover)),
-        ),
-        defaultNextScreen: const MainPage(),
-      ),
+          gradient: const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xff982282), Color(0xffEEA863)],
+          ),
+          childWidget: Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width * 0.75,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/instagram.png"),
+                    fit: BoxFit.cover)),
+          ),
+          defaultNextScreen: const LoginPage()),
       // body: Column(
       //   children: [
       //     Stack(children: [
